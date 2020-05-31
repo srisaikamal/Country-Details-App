@@ -1,0 +1,26 @@
+.country {
+  position: relative;
+  &--name {
+    font-size: 3rem;
+  }
+  &--details {
+    text-align: center;
+  }
+  &--flag {
+    height: 10rem;
+    width: auto;
+    border: 2px solid black;
+  }
+}
+.footer {
+  margin-top: 5rem;
+}
+
+.netlify {
+  height: 2rem;
+  display: block;
+  margin: 0 auto;
+}
+.population {
+  font-weight: 700;
+}

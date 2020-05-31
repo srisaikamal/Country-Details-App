@@ -4,11 +4,9 @@ import CountryName from "../Countries/CountryNames";
 
 const Api = () => {
   const [data, setData] = useState([]);
-  const [search, setSearch] = useState("");
 
   useEffect(() => {
     fetchData();
-    document.title = search + "All Countires details";
   }, []);
 
   const fetchData = async () => {

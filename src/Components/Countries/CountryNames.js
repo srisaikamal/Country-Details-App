@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../../sass/main.scss";
 
 const CountryName = ({ countrydata }) => {
   const filteredCountry = (letter) => {
@@ -33,15 +34,25 @@ const CountryName = ({ countrydata }) => {
     "Y",
     "Z",
   ];
+
   return (
     <div>
+      <h1 className="heading">All Country Details</h1>
       {alphabet.map((a) => (
-        <div>
-          <h1>{a}</h1>
+        <div className="countries">
+          <h1 className="Alphabets">{a}</h1>
           {filteredCountry(a).map((raw) => (
-            <h2 key={raw.name}>
-              <Link to={`/country/${raw.callingCodes}`}> {raw.name}</Link>
-            </h2>
+            <ul>
+              <li>
+                <Link
+                  className="countrynames"
+                  to={`/country/${raw.alpha3Code}`}
+                >
+                  {" "}
+                  {raw.name}
+                </Link>
+              </li>
+            </ul>
           ))}
         </div>
       ))}

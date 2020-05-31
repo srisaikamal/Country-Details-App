@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Api, Countires } from "./Components";
+import { Api } from "./Components";
 import "./sass/main.scss";
 class App extends Component {
   render() {
