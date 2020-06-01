@@ -13,13 +13,14 @@ const Countries = ({ match }) => {
     const data = await axios.get(
       `https://restcountries.eu/rest/v2/alpha/${match.params.code}`
     );
+    console.log(data.data);
     setData(data.data);
   };
 
   return (
     <div className="country--details">
       <h1 className="country--name" key={data.name}>
-        {data.name}
+        {data.name} | {data.nativeName}
       </h1>
       <img className="country--flag" src={data.flag} alt={data.flag} />
       <p key={data.capital}>
@@ -43,7 +44,32 @@ const Countries = ({ match }) => {
       <p key={data.subregion}>
         Sub Region: <strong>{data.subregion}</strong>
       </p>
-      {/* <p>{data.currencies.map((raw) => raw.name)}</p> */}
+      {typeof data.currencies === "object"
+        ? data.currencies.map((data) => (
+            <p>
+              Currency:{" "}
+              <strong>
+                {data.name} {data.symbol}
+              </strong>
+            </p>
+          ))
+        : null}
+      {typeof data.callingCodes === "object"
+        ? data.callingCodes.map((data) => (
+            <p>
+              Calling Code: <strong>+{data}</strong>
+            </p>
+          ))
+        : null}
+
+      {typeof data.languages === "object"
+        ? data.languages.map((data) => (
+            <p>
+              Languages : <strong>{data.name}</strong>{" "}
+              <strong>{data.nativeName}</strong>
+            </p>
+          ))
+        : null}
       <footer className="footer">
         <p>
           &copy; 2020 Open-Source Project By{" "}
